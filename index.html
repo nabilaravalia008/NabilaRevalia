@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nabilapage's 💙 - Tugas MSIP & Galeri</title>
+  
+  <!-- Font Google: Poppins (Cantik, Modern, & Ramah) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- File CSS Utama -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dekorasi Awan, Ikan & Bubble Lucu di Latar Belakang -->
+  <div class="cute-bg-decorations" aria-hidden="true">
+    <div class="floating-bubble bubble-1">🫧</div>
+    <div class="floating-bubble bubble-2">🐟</div>
+    <div class="floating-bubble bubble-3">✨</div>
+    <div class="floating-bubble bubble-4">💙</div>
+    <div class="floating-bubble bubble-5">🫧</div>
+  </div>
+
+  <!-- ==========================================
+       NAVBAR GEMES (Sticky, Blur & Responsif)
+       ========================================== -->
+  <header class="navbar-wrapper">
+    <nav class="navbar container">
+      <!-- Logo / Nama Brand Lucu -->
+      <a href="#home" class="nav-brand" data-page="home">
+        <span class="brand-icon">🐟</span>
+        <span class="brand-text">nabila<strong>page's</strong> <span class="cute-sparkle">✨</span></span>
+      </a>
+
+      <!-- Tombol Hamburger Mobile -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Buka Menu Navigasi" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Daftar Menu Navigasi -->
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="#home" class="nav-link active" data-page="home">
+            <span class="nav-emoji">🏠</span>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="#biodata" class="nav-link" data-page="biodata">
+            <span class="nav-emoji">🎀</span>
+            <span>Biodata</span>
+          </a>
+        </li>
+        <li>
+          <a href="#gallery" class="nav-link" data-page="gallery">
+            <span class="nav-emoji">📸</span>
+            <span>Gallery</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       KONTEN UTAMA (Single Page Transition)
+       ========================================== -->
+  <main class="main-content">
+
+    <!-- ------------------------------------------
+         HALAMAN 1: HOME (BERANDA)
+         ------------------------------------------ -->
+    <section id="page-home" class="page-section active">
+      
+      <!-- HERO SECTION GEMES -->
+      <div class="hero-section">
+        <div class="container hero-container">
+          <div class="hero-badge">
+            <span class="badge-sparkle">🐟</span> Fakultas Perikanan dan Ilmu Kelautan ULM 💙
+          </div>
+          <h1 class="hero-title">
+            Hai, Aku <span class="highlight-text">Nabila Revalia Andini</span>! <span class="wave-hand">👋</span>
+          </h1>
+          <p class="hero-subtitle">
+            Selamat datang di page tugas Mata Kuliah <strong>Manajemen dan Sistem Informasi Perikanan</strong>, Fakultas Perikanan dan Ilmu Kelautan, Universitas Lambung Mangkurat.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="btnScrollToTasks">
+              <span>Lihat Daftar Tugas</span>
+              <span class="btn-icon-right">📂</span>
+            </button>
+            <button class="btn btn-secondary" onclick="navigateToPage('biodata')">
+              <span>Profil Biodata</span>
+              <span class="btn-icon-right">🌸</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Ornamen Bulatan Gradasi Biru Laut Lembut -->
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+      </div>
+
+      <!-- BAGIAN: TUGAS SAYA -->
+      <div class="tasks-section" id="tasksSection">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">🐟 Tugas Kuliah MSIP 🐟</span>
+            <h2 class="section-title">Tugas Saya</h2>
+            <p class="section-desc">Daftar tugas mata kuliah Manajemen dan Sistem Informasi Perikanan. Klik tombol untuk membuka detail dan berkas tugas.</p>
+          </div>
+
+          <!-- Grid 5 Kotak Tugas Biru Gemes -->
+          <div class="tasks-grid" id="tasksGrid">
+            <!-- 5 Kartu Tugas akan dimuat secara dinamis oleh JavaScript -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ------------------------------------------
+         HALAMAN 2: BIODATA
+         ------------------------------------------ -->
+    <section id="page-biodata" class="page-section">
+      <div class="container py-section">
+        <div class="section-header">
+          <span class="section-tag">🌸 Kenalan Lebih Dekat 🌸</span>
+          <h2 class="section-title">Profil & Biodata Diri</h2>
+          <p class="section-desc">Informasi lengkap biodata diri mahasiswa Fakultas Perikanan dan Ilmu Kelautan ULM.</p>
+        </div>
+
+        <div class="biodata-card">
+          <!-- Kolom Kiri: Foto Profil Lucu -->
+          <div class="biodata-left">
+            <div class="profile-avatar-wrapper" title="Klik untuk mengganti foto profil">
+              <img id="biodataAvatarImg" src="foto_profil_nabila.jpg" alt="Foto Profil Nabila" class="profile-avatar">
+              <!-- Overlay upload saat kursor diarahkan ke foto -->
+              <label for="avatarUploadInput" class="avatar-upload-overlay">
+                <span class="cam-icon">📸</span>
+                <span>Ganti Foto</span>
+              </label>
+              <!-- Input file tersembunyi -->
+              <input type="file" id="avatarUploadInput" accept="image/*" style="display: none;">
+            </div>
+
+            <h3 class="profile-display-name" id="profileBadgeName">Nabila Revalia Andini</h3>
+            <div class="profile-badges-row">
+              <span class="profile-status-pill">🐟 FPIK - ULM</span>
+              <span class="profile-verified-pill">💙 Verified</span>
+            </div>
+
+            <button type="button" class="btn btn-outline-cute mt-3" onclick="document.getElementById('avatarUploadInput').click()">
+              <span>📸 Unggah Foto Baru</span>
+            </button>
+          </div>
+
+          <!-- Kolom Kanan: Rincian Biodata (Tanpa Hobi & Tanpa Tentang Saya) -->
+          <div class="biodata-right">
+            <!-- Header Kartu & Tombol Aksi Edit/Simpan -->
+            <div class="biodata-actions-bar">
+              <div class="biodata-header-title">
+                <h3 class="biodata-info-title">Detail Biodata</h3>
+                <span class="sub-label">Kartu Identitas Mahasiswi FPIK ULM</span>
+              </div>
+              <div class="action-buttons">
+                <!-- Tombol Edit (tampil di view mode) -->
+                <button type="button" class="btn btn-primary" id="btnEditBiodata">
+                  <span>✏️ Edit Biodata</span>
+                </button>
+                <!-- Tombol Simpan & Batal (tampil di edit mode) -->
+                <button type="button" class="btn btn-success" id="btnSaveBiodata" style="display: none;">
+                  <span>💾 Simpan</span>
+                </button>
+                <button type="button" class="btn btn-secondary" id="btnCancelBiodata" style="display: none;">
+                  <span>Batal</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- TAMPILAN VIEW (Mode Baca Teks Biasa Rapi) -->
+            <div class="biodata-view-mode" id="biodataViewMode">
+              <div class="bio-field-group">
+                <div class="bio-field-item">
+                  <div class="bio-field-header">
+                    <span class="bio-icon">👤</span>
+                    <span class="bio-label">Nama Lengkap</span>
+                  </div>
+                  <p class="bio-value" id="viewBioNama">Nabila Revalia Andini</p>
+                </div>
+
+                <div class="bio-field-item">
+                  <div class="bio-field-header">
+                    <span class="bio-icon">🎂</span>
+                    <span class="bio-label">Tempat, Tanggal Lahir</span>
+                  </div>
+                  <p class="bio-value" id="viewBioTTL">Banjarbaru, 28 April 2006</p>
+                </div>
+
+                <div class="bio-field-item">
+                  <div class="bio-field-header">
+                    <span class="bio-icon">📍</span>
+                    <span class="bio-label">Alamat</span>
+                  </div>
+                  <p class="bio-value" id="viewBioAlamat">Komp. Pondok Kopi No. 6B Loktabat Selatan</p>
+                </div>
+
+                <div class="bio-field-item">
+                  <div class="bio-field-header">
+                    <span class="bio-icon">🎓</span>
+                    <span class="bio-label">Sekolah / Kampus</span>
+                  </div>
+                  <p class="bio-value" id="viewBioSekolah">Universitas Lambung Mangkurat</p>
+                </div>
+
+                <div class="bio-field-item full-width">
+                  <div class="bio-field-header">
+                    <span class="bio-icon">💌</span>
+                    <span class="bio-label">Email</span>
+                  </div>
+                  <p class="bio-value" id="viewBioEmail">nabilaravalia008@gmail.com</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- FORM EDIT (Mode Edit Input Form) -->
+            <form class="biodata-edit-mode" id="biodataEditMode" style="display: none;">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="inputBioNama">👤 Nama Lengkap</label>
+                  <input type="text" id="inputBioNama" class="form-control" placeholder="Nama Lengkap">
+                </div>
+                <div class="form-group">
+                  <label for="inputBioTTL">🎂 Tempat, Tanggal Lahir</label>
+                  <input type="text" id="inputBioTTL" class="form-control" placeholder="Tempat, Tanggal Lahir">
+                </div>
+                <div class="form-group">
+                  <label for="inputBioAlamat">📍 Alamat</label>
+                  <input type="text" id="inputBioAlamat" class="form-control" placeholder="Alamat Lengkap">
+                </div>
+                <div class="form-group">
+                  <label for="inputBioSekolah">🎓 Kampus / Universitas</label>
+                  <input type="text" id="inputBioSekolah" class="form-control" placeholder="Nama Kampus">
+                </div>
+                <div class="form-group full-width">
+                  <label for="inputBioEmail">💌 Email</label>
+                  <input type="email" id="inputBioEmail" class="form-control" placeholder="Alamat Email">
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------
+         HALAMAN 3: GALLERY KHUSUS NABILA
+         (Tanpa Tombol Tambah Foto & Tanpa Hapus)
+         ------------------------------------------ -->
+    <section id="page-gallery" class="page-section">
+      <div class="container py-section">
+        
+        <!-- Header Galeri Khusus -->
+        <div class="gallery-header-bar">
+          <div>
+            <span class="section-tag">📸 Galeri Eksklusif Nabila 💙</span>
+            <h2 class="section-title">Galeri Foto</h2>
+            <p class="section-desc">Koleksi foto khusus Nabila Revalia Andini - Fakultas Perikanan dan Ilmu Kelautan ULM. Klik foto untuk melihat tampilan penuh.</p>
+          </div>
+        </div>
+
+        <!-- Grid Foto Responsif (3 Kolom Desktop, 2 Tablet, 1 Mobile) -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- 3 Foto Khusus dimuat secara dinamis oleh JavaScript -->
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       MODAL POPUP: DETAIL & BERKAS TUGAS (HOME)
+       ========================================== -->
+  <div class="modal-overlay" id="taskModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTaskHeading">
+      <!-- Tombol Tutup X Gemes -->
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Tutup Popup">&times;</button>
+      
+      <div class="modal-header">
+        <span class="modal-badge" id="modalTaskBadge">Tugas</span>
+        <h3 id="modalTaskHeading">Detail Tugas</h3>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- BAGIAN TAUTAN / BERKAS YANG BISA DIBUKA (SESUAI REQUEST) -->
+        <div class="task-open-sections" id="taskOpenSectionsArea">
+          <label class="task-section-subtitle">📂 Berkas & Data yang Dapat Dibuka:</label>
+          <div class="task-action-links" id="taskActionLinksList">
+            <!-- Tombol-tombol bagian (1, 2, atau 3 bagian) dimuat dinamis oleh JS -->
+          </div>
+        </div>
+
+        <form id="taskEditForm" class="mt-3">
+          <input type="hidden" id="editTaskId">
+          
+          <div class="form-group">
+            <label for="editTaskTitle">📌 Judul Tugas</label>
+            <input type="text" id="editTaskTitle" class="form-control" required placeholder="Masukkan judul tugas...">
+          </div>
+
+          <div class="form-group">
+            <label for="editTaskDesc">📝 Deskripsi Tugas</label>
+            <textarea id="editTaskDesc" rows="3" class="form-control" required placeholder="Deskripsi ringkas tugas..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="editTaskNotes">📖 Catatan / Keterangan Tambahan</label>
+            <textarea id="editTaskNotes" rows="4" class="form-control" placeholder="Tuliskan catatan, instruksi, atau link tugas ini..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="editTaskStatus">✅ Status Pengerjaan</label>
+            <select id="editTaskStatus" class="form-control">
+              <option value="Selesai">Selesai ✅</option>
+              <option value="Sedang Dikerjakan">Sedang Dikerjakan ⏳</option>
+              <option value="Belum Mulai">Belum Mulai 📌</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="modalCancelBtn">Tutup</button>
+        <button type="button" class="btn btn-primary" id="modalSaveTaskBtn">
+          <span>💾 Simpan Perubahan</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL LIGHTBOX: LIHAT FOTO BESAR (GALLERY)
+       ========================================== -->
+  <div class="lightbox-overlay" id="lightboxModal" aria-hidden="true">
+    <div class="lightbox-container">
+      <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Tutup Foto">&times;</button>
+      <img id="lightboxImage" src="" alt="Foto Diperbesar" class="lightbox-img">
+      <div class="lightbox-caption" id="lightboxCaption">Nama Foto</div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL DATA VIEWER / LINK PREVIEW DIALOG
+       ========================================== -->
+  <div class="modal-overlay" id="dataViewerModal" aria-hidden="true">
+    <div class="modal-content" id="dataViewerModalContent" role="dialog" aria-modal="true" style="max-width: 600px;">
+      <button class="modal-close-btn" id="dataViewerCloseBtn">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge" id="dataViewerBadge">Berkas Terbuka</span>
+        <h3 id="dataViewerHeading">Tinjauan Berkas</h3>
+      </div>
+      <div class="modal-body" id="dataViewerBody" style="text-align: center; padding: 30px 24px;">
+        <!-- Konten penjelasan viewer dimuat oleh JS -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="dataViewerActionBtn">OK, Mengerti</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       TOAST NOTIFICATION (Pemberitahuan Lucu)
+       ========================================== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ==========================================
+       FOOTER GEMES
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p class="footer-copy">
+        &copy; 2026 <strong>Nabila Revalia Andini</strong> &bull; Manajemen & Sistem Informasi Perikanan
+      </p>
+      <p class="footer-sub">Fakultas Perikanan dan Ilmu Kelautan, Universitas Lambung Mangkurat 🐟💙</p>
+    </div>
+  </footer>
+
+  <!-- File JavaScript Eksternal -->
+  <script src="script.js"></script>
+</body>
+</html>

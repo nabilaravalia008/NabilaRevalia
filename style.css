@@ -1,0 +1,1668 @@
+/* ==========================================================================
+   NABILA'S CUTE SPACE - STYLE UTAMA (style.css)
+   Mata Kuliah: Manajemen dan Sistem Informasi Perikanan (MSIP)
+   Fakultas Perikanan dan Ilmu Kelautan - Universitas Lambung Mangkurat
+   Tema Warna: Serba BIRU yang Lucu, Estetik, dan Gemes! 💙✨
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABEL WARNA & ATURAN DASAR (Cute Blue Theme)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Nuansa Biru Gemes */
+  --blue-dark: #1E3A8A;       /* Biru tua elegan untuk teks judul & footer */
+  --blue-primary: #2563EB;    /* Biru utama cerah ceria */
+  --blue-sky: #38BDF8;        /* Biru langit lembut */
+  --blue-pastel: #BAE6FD;     /* Biru pastel menggemaskan */
+  --blue-soft: #E0F2FE;       /* Biru bubble untuk badge & tag */
+  --blue-hover: #1D4ED8;      /* Biru saat hover */
+  --bg-page: #F0F7FF;         /* Latar belakang putih kebiruan super bersih */
+  
+  /* Aksen Manis */
+  --accent-pink: #F472B6;     /* Sedikit sentuhan pink manis untuk ornamen */
+  --white: #FFFFFF;
+  --text-dark: #0F172A;
+  --text-muted: #64748B;
+  --border-color: #DBEAFE;
+  --border-cute: #BFDBFE;
+  
+  /* Status Warna */
+  --success: #10B981;
+  --success-bg: #D1FAE5;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+
+  /* Bayangan Halus & Berpendar (Glow) */
+  --shadow-sm: 0 4px 12px rgba(37, 99, 235, 0.08);
+  --shadow-md: 0 10px 28px rgba(37, 99, 235, 0.12);
+  --shadow-lg: 0 18px 40px rgba(37, 99, 235, 0.20);
+  --shadow-cute-card: 0 14px 32px rgba(30, 58, 138, 0.18);
+  --shadow-glow: 0 0 24px rgba(56, 189, 248, 0.4);
+
+  /* Radius Membulat (Bubble / Kawaii Style) */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-full: 9999px;
+  --transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Reset Dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.py-section {
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+
+/* --------------------------------------------------------------------------
+   DEKORASI BUBBLE / AWAN / IKAN MELAYANG LUCU DI LATAR BELAKANG
+   -------------------------------------------------------------------------- */
+.cute-bg-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-bubble {
+  position: absolute;
+  font-size: 1.8rem;
+  opacity: 0.42;
+  animation: floatCute 6s ease-in-out infinite alternate;
+}
+
+.bubble-1 { top: 12%; left: 4%; animation-duration: 5s; }
+.bubble-2 { top: 22%; right: 6%; font-size: 2.2rem; animation-duration: 7s; }
+.bubble-3 { bottom: 30%; left: 6%; animation-duration: 6s; }
+.bubble-4 { bottom: 18%; right: 8%; animation-duration: 5.5s; }
+.bubble-5 { top: 60%; right: 4%; font-size: 1.5rem; animation-duration: 6.5s; }
+
+@keyframes floatCute {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(6deg) scale(1.08); }
+  100% { transform: translateY(0px) rotate(-4deg); }
+}
+
+/* --------------------------------------------------------------------------
+   2. NAVBAR GEMES (Sticky, Frosted Glass)
+   -------------------------------------------------------------------------- */
+.navbar-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 2px solid var(--border-cute);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+  transition: var(--transition);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--blue-dark);
+  font-size: 1.35rem;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.nav-brand:hover {
+  transform: scale(1.04);
+}
+
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #60A5FA, var(--blue-primary));
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  font-size: 1.4rem;
+  border: 2px solid var(--white);
+}
+
+.brand-text strong {
+  color: var(--blue-primary);
+}
+
+.cute-sparkle {
+  font-size: 1rem;
+  animation: pulseSparkle 1.8s infinite;
+  display: inline-block;
+}
+
+@keyframes pulseSparkle {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.35) rotate(15deg); opacity: 1; }
+}
+
+/* Menu Navigasi Desktop */
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 10px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+}
+
+.nav-emoji {
+  font-size: 1.1rem;
+}
+
+.nav-link:hover {
+  color: var(--blue-primary);
+  background-color: var(--blue-soft);
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  color: var(--white);
+  background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Tombol Hamburger Mobile */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: var(--blue-soft);
+  border: 2px solid var(--border-cute);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  padding: 8px;
+  transition: var(--transition);
+}
+
+.hamburger-btn .bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--blue-primary);
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+.hamburger-btn.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger-btn.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --------------------------------------------------------------------------
+   3. ANIMASI PERPINDAHAN HALAMAN (Smooth Fade Transition)
+   -------------------------------------------------------------------------- */
+.main-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.page-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.page-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   4. HALAMAN 1: HERO SECTION MSIP
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F7FF 100%);
+  padding: 70px 0 60px;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 2px dashed var(--border-cute);
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 24px;
+  background-color: var(--white);
+  color: var(--blue-primary);
+  border: 2px solid var(--border-cute);
+  border-radius: var(--radius-full);
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-sm);
+  animation: floatCute 4s infinite alternate;
+}
+
+.badge-sparkle {
+  font-size: 1.1rem;
+}
+
+.hero-title {
+  font-size: 2.85rem;
+  font-weight: 800;
+  color: var(--blue-dark);
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.wave-hand {
+  display: inline-block;
+  animation: waveHand 2s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes waveHand {
+  0%, 100% { transform: rotate(0deg); }
+  20%, 60% { transform: rotate(14deg); }
+  40%, 80% { transform: rotate(-14deg); }
+}
+
+.highlight-text {
+  background: linear-gradient(135deg, #2563EB, #0284C7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 14px rgba(37, 99, 235, 0.15);
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 34px;
+}
+
+.hero-subtitle strong {
+  color: var(--blue-dark);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-icon-right {
+  font-size: 1.1rem;
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(75px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.hero-blob-1 {
+  width: 350px;
+  height: 350px;
+  background: #93C5FD;
+  top: -70px;
+  left: 5%;
+}
+
+.hero-blob-2 {
+  width: 320px;
+  height: 320px;
+  background: #BAE6FD;
+  bottom: -40px;
+  right: 5%;
+}
+
+/* --------------------------------------------------------------------------
+   5. HALAMAN 1: BAGIAN TUGAS SAYA (4 KOTAK BIRU GEMES)
+   -------------------------------------------------------------------------- */
+.tasks-section {
+  padding: 64px 0 84px;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 46px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--blue-primary);
+  background: var(--blue-soft);
+  padding: 4px 18px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+  border: 1px solid var(--border-cute);
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--blue-dark);
+  margin-bottom: 10px;
+}
+
+.section-desc {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+}
+
+/* Grid 5 Kotak Tugas Responsif */
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+/* Kartu Tugas Lucu Bergradasi Biru */
+.task-card {
+  position: relative;
+  background: linear-gradient(140deg, #3B82F6 0%, #1D4ED8 60%, #1E3A8A 100%);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-cute-card);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.35s ease, 
+              filter 0.35s ease;
+  overflow: hidden;
+}
+
+.task-card::after {
+  content: "🐟";
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  font-size: 1.3rem;
+  opacity: 0.45;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.task-card:hover::after {
+  opacity: 0.95;
+  transform: rotate(15deg) scale(1.25);
+}
+
+.task-card:hover {
+  transform: translateY(-9px) scale(1.02);
+  filter: brightness(1.06);
+  box-shadow: 0 22px 45px rgba(30, 58, 138, 0.35);
+}
+
+.task-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.task-number-pill {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 5px 14px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.task-status-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-status-pill.selesai {
+  background: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #86EFAC;
+}
+
+.task-title {
+  font-size: 1.32rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--white);
+  line-height: 1.35;
+}
+
+.task-desc {
+  font-size: 0.92rem;
+  color: #E0F2FE;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Indikator Bagian Berkas pada Kartu */
+.task-parts-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-full);
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #E0F2FE;
+  margin-bottom: 18px;
+}
+
+.task-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn-open-task {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background-color: var(--white);
+  color: var(--blue-primary);
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: var(--transition);
+}
+
+.btn-open-task:hover {
+  background-color: #EFF6FF;
+  transform: translateX(4px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   AREA BERKAS & TAUTAN YANG BISA DIBUKA (MODAL)
+   -------------------------------------------------------------------------- */
+.task-open-sections {
+  background: linear-gradient(135deg, #F0F7FF 0%, #E0F2FE 100%);
+  border: 2px dashed var(--border-cute);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.task-section-subtitle {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin-bottom: 12px;
+}
+
+.task-action-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-open-section-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background-color: var(--white);
+  border: 1.5px solid var(--border-cute);
+  border-radius: var(--radius-md);
+  color: var(--blue-dark);
+  font-size: 0.94rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+  transition: var(--transition);
+}
+
+.btn-open-section-item:hover {
+  background: var(--blue-primary);
+  color: var(--white);
+  border-color: var(--blue-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+}
+
+.btn-open-section-item .item-arrow {
+  font-size: 1.1rem;
+}
+
+/* Styling untuk Bagian & Sub-bagian Bertingkat (Tugas 4: Tugas Akhir Mandiri) */
+.task-part-group {
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-cute);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.06);
+  margin-bottom: 8px;
+}
+
+.task-part-group-header {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: #1E3A8A;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1.5px dashed #BFDBFE;
+  padding-bottom: 8px;
+}
+
+.task-part-sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-open-subitem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-sm);
+  color: var(--blue-dark);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-open-subitem:hover {
+  background: var(--blue-soft);
+  color: var(--blue-primary);
+  border-color: var(--blue-primary);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   6. HALAMAN 2: BIODATA NABILA REVALIA ANDINI
+   -------------------------------------------------------------------------- */
+.biodata-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-cute);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  overflow: hidden;
+}
+
+.biodata-left {
+  background: linear-gradient(180deg, #F0F7FF 0%, #DBEAFE 100%);
+  padding: 45px 30px;
+  border-right: 2px solid var(--border-cute);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-avatar-wrapper {
+  position: relative;
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.25);
+  border: 5px solid var(--white);
+  cursor: pointer;
+  background-color: var(--blue-soft);
+  transition: var(--transition);
+}
+
+.profile-avatar-wrapper:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 35px rgba(37, 99, 235, 0.35);
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.avatar-upload-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 58, 138, 0.78);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.avatar-upload-overlay .cam-icon {
+  font-size: 1.6rem;
+}
+
+.profile-avatar-wrapper:hover .avatar-upload-overlay {
+  opacity: 1;
+}
+
+.profile-display-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--blue-dark);
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.profile-badges-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.profile-status-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #E0E7FF;
+  color: #3730A3;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 1px solid #C7D2FE;
+}
+
+.profile-verified-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #EFF6FF;
+  color: var(--blue-primary);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 1px solid var(--border-cute);
+}
+
+.btn-outline-cute {
+  padding: 9px 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  background: var(--white);
+  border: 2px solid var(--blue-primary);
+  color: var(--blue-primary);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline-cute:hover {
+  background: var(--blue-primary);
+  color: var(--white);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+
+/* Kolom Kanan: Rincian Biodata */
+.biodata-right {
+  padding: 42px;
+}
+
+.biodata-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 2px dashed var(--border-cute);
+}
+
+.biodata-info-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--blue-dark);
+}
+
+.sub-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Field Group Teks Biasa (View Mode) */
+.bio-field-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.bio-field-item {
+  background: #F8FAFC;
+  padding: 18px 22px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid #E2E8F0;
+  transition: var(--transition);
+}
+
+.bio-field-item:hover {
+  background: #F0F7FF;
+  border-color: #93C5FD;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.bio-field-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.bio-field-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.bio-icon {
+  font-size: 1.15rem;
+}
+
+.bio-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--blue-primary);
+}
+
+.bio-value {
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* Form Edit Mode */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 18px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  border: 2px solid #CBD5E1;
+  border-radius: var(--radius-sm);
+  background-color: #FFFFFF;
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* --------------------------------------------------------------------------
+   7. HALAMAN 3: GALLERY KHUSUS (3 FOTO NABILA)
+   -------------------------------------------------------------------------- */
+.gallery-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 38px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Grid Foto: 3 Kolom Desktop */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+/* Kartu Foto Eksklusif */
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--border-cute);
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--blue-sky);
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-img {
+  transform: scale(1.08);
+}
+
+/* Overlay Galeri Rapi Tanpa Tanggal & Tanpa Tombol Hapus */
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(30, 58, 138, 0.1) 0%, rgba(30, 58, 138, 0.92) 100%);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 22px;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-info-bottom {
+  color: var(--white);
+  text-align: center;
+}
+
+.gallery-photo-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #FFFFFF;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-badge-hint {
+  display: inline-block;
+  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.25);
+  color: #E0F2FE;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(4px);
+}
+
+/* --------------------------------------------------------------------------
+   8. MODAL EDIT DETAIL TUGAS GEMES
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: var(--white);
+  width: 100%;
+  max-width: 600px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.28);
+  position: relative;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+  border: 2px solid var(--border-cute);
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: var(--blue-soft);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  color: var(--blue-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: var(--transition);
+}
+
+.modal-close-btn:hover {
+  background: #FEE2E2;
+  color: var(--danger);
+  transform: scale(1.15) rotate(90deg);
+}
+
+.modal-header {
+  padding: 24px 28px 16px;
+  border-bottom: 2px solid var(--border-cute);
+  background: linear-gradient(180deg, #F0F7FF 0%, #FFFFFF 100%);
+}
+
+.modal-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  background: var(--blue-primary);
+  color: var(--white);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.modal-header h3 {
+  font-size: 1.4rem;
+  color: var(--blue-dark);
+}
+
+.modal-body {
+  padding: 24px 28px;
+  max-height: calc(85vh - 160px);
+  overflow-y: auto;
+}
+
+.modal-body .form-group {
+  margin-bottom: 18px;
+}
+
+.modal-footer {
+  padding: 18px 28px 24px;
+  background-color: #F8FAFC;
+  border-top: 2px solid var(--border-cute);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   9. LIGHTBOX POPUP FOTO
+   -------------------------------------------------------------------------- */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 20, 40, 0.94);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 24px;
+}
+
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-container {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.9);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lightbox-overlay.active .lightbox-container {
+  transform: scale(1);
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.lightbox-close-btn:hover {
+  background: var(--blue-primary);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: var(--radius-md);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  object-fit: contain;
+}
+
+.lightbox-caption {
+  color: var(--white);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 14px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 24px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+}
+
+/* --------------------------------------------------------------------------
+   10. TOMBOL-TOMBOL UMUM GEMES (Cute Buttons)
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 26px;
+  font-family: inherit;
+  font-size: 0.96rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+  color: var(--white);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.45);
+}
+
+.btn-secondary {
+  background-color: #E2E8F0;
+  color: var(--blue-dark);
+}
+
+.btn-secondary:hover {
+  background-color: #CBD5E1;
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: var(--white);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.32);
+}
+
+.btn-success:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.42);
+}
+
+.mt-3 {
+  margin-top: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   11. TOAST NOTIFIKASI GEMES
+   -------------------------------------------------------------------------- */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  background: #0F172A;
+  color: var(--white);
+  border-radius: var(--radius-full);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  font-size: 0.94rem;
+  font-weight: 600;
+  animation: toastSlideIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), toastSlideOut 0.35s ease 2.7s forwards;
+  border: 2px solid var(--blue-primary);
+}
+
+.toast.toast-success {
+  border-color: var(--success);
+}
+
+.toast.toast-danger {
+  border-color: var(--danger);
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(60px) scale(0.9); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes toastSlideOut {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(60px); }
+}
+
+/* --------------------------------------------------------------------------
+   12. FOOTER GEMES
+   -------------------------------------------------------------------------- */
+.site-footer {
+  margin-top: auto;
+  background: linear-gradient(180deg, #1E3A8A 0%, #0F172A 100%);
+  color: #E2E8F0;
+  padding: 34px 0;
+  border-top: 3px solid #3B82F6;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: 1.02rem;
+  margin-bottom: 6px;
+}
+
+.footer-copy strong {
+  color: #93C5FD;
+}
+
+.footer-sub {
+  font-size: 0.85rem;
+  color: #BAE6FD;
+}
+
+/* --------------------------------------------------------------------------
+   14. GAYA TAMPILAN KHUSUS ANALISIS PIECES (TUGAS 3)
+   -------------------------------------------------------------------------- */
+.pieces-container {
+  text-align: left;
+  font-family: inherit;
+  color: var(--text-dark);
+}
+
+.pieces-hero-card {
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #38BDF8 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.pieces-hero-header {
+  font-size: 1.18rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.pieces-hero-meta {
+  font-size: 0.85rem;
+  color: #E0F2FE;
+  margin-bottom: 16px;
+}
+
+.pieces-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.pieces-stat-box {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  text-align: center;
+}
+
+.pieces-stat-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #BAE6FD;
+  margin-bottom: 2px;
+}
+
+.pieces-stat-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.pieces-table-wrapper {
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-cute);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.pieces-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.pieces-table th {
+  background: #EFF6FF;
+  color: #1E3A8A;
+  font-weight: 700;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--border-cute);
+  white-space: nowrap;
+}
+
+.pieces-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #F1F5F9;
+  vertical-align: middle;
+}
+
+.pieces-table tr:hover {
+  background-color: #F8FAFC;
+}
+
+.pieces-table tr.total-row {
+  background: #EFF6FF;
+  font-weight: 800;
+  color: #1E3A8A;
+  border-top: 2px solid #BFDBFE;
+}
+
+.pieces-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.pieces-badge-puas {
+  background: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #86EFAC;
+}
+
+.pieces-badge-sangat-puas {
+  background: #DBEAFE;
+  color: #1D4ED8;
+  border: 1px solid #93C5FD;
+}
+
+.pieces-bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.pieces-bar-bg {
+  flex: 1;
+  height: 8px;
+  background: #E2E8F0;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.pieces-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38BDF8, #2563EB);
+  border-radius: var(--radius-full);
+}
+
+.pieces-scale-box {
+  background: #F8FAFC;
+  border: 1px dashed var(--border-cute);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 0.8rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-top: 14px;
+}
+
+.pieces-details-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  background: var(--blue-soft);
+  color: var(--blue-primary);
+  border: 1.5px solid var(--border-cute);
+  border-radius: var(--radius-full);
+  padding: 8px 18px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pieces-details-btn:hover {
+  background: var(--blue-primary);
+  color: #FFFFFF;
+}
+
+.pieces-subtable-block {
+  margin-top: 14px;
+  background: #FAFAFA;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+
+.pieces-subtable-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #1E3A8A;
+  margin-bottom: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   13. MEDIA QUERIES (RESPONSIF TABLET & HP)
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 2.3rem;
+  }
+  
+  .biodata-card {
+    grid-template-columns: 290px 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    flex-direction: column;
+    padding: 20px 24px;
+    box-shadow: 0 18px 30px rgba(37, 99, 235, 0.15);
+    border-bottom: 2px solid var(--border-cute);
+    gap: 10px;
+    transform: translateY(-160%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s ease, opacity 0.3s ease;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 20px;
+  }
+
+  .hero-section {
+    padding: 50px 0 40px;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.98rem;
+  }
+
+  .tasks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .biodata-card {
+    grid-template-columns: 1fr;
+  }
+
+  .biodata-left {
+    border-right: none;
+    border-bottom: 2px solid var(--border-cute);
+    padding: 32px 20px;
+  }
+
+  .biodata-right {
+    padding: 26px 20px;
+  }
+
+  .bio-field-group,
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .biodata-actions-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .action-buttons {
+    width: 100%;
+  }
+
+  .action-buttons .btn {
+    flex: 1;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
